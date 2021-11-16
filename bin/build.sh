@@ -9,7 +9,8 @@ VERSION=${1#"$PREFIX"}
 echo "Building Taro CPT Front v${VERSION}..."
 
 # Install composer.
-composer install --no-dev --prefer-dist
+# Temporary ignore.
+# composer install --no-dev --prefer-dist
 
 # Install NPM.
 npm install

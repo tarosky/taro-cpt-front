@@ -15,7 +15,7 @@ add_filter( 'display_post_states', function( $states, $post ) {
 	if ( ! ts_cptf_is_front( $post ) ) {
 		return $states;
 	}
-	$states[ 'is-front' ] = __( 'Front Page', 'tscptf' );
+	$states['is-front'] = __( 'Front Page', 'tscptf' );
 	return $states;
 }, 10, 2 );
 
@@ -45,7 +45,7 @@ add_action( 'add_meta_boxes', function( $post_type ) {
 	}
 	add_meta_box( 'tscpf-is-front', __( 'Front Page Setting', 'tscptf' ), function( WP_Post $post ) {
 		$front = ts_cptf_get_front_page( $post->post_type );
-		if ( $front && $front->ID !== $post->ID  ) {
+		if ( $front && $front->ID !== $post->ID ) {
 			// Other page is front.
 			printf(
 				'<p class="description">%s: <a href="%s" target="_blank" rel="noopener noreferrer">%s</a><br />%s</p>',

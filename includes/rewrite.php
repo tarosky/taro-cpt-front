@@ -14,7 +14,7 @@ add_filter( 'post_type_link', function( $link, $post ) {
 		// This is front page.
 		// Generate original pemalink.
 		$struct = ts_cptf_post_type_struct( $post->post_type );
-		$link = apply_filters( 'tscptf_root_url', home_url( $struct ), $post );
+		$link   = apply_filters( 'tscptf_root_url', home_url( $struct ), $post );
 	}
 	return $link;
 }, 10, 2 );
@@ -43,7 +43,7 @@ add_filter( 'rewrite_rules_array', function( $rules ) {
 			continue;
 		}
 		$new_rules[ '^' . $struct . '/page/(\d+)/?$' ] = sprintf( 'index.php?root_of=%s&page=$matches[1]', $post_type );
-		$new_rules[ '^' . $struct . '/?$' ] = 'index.php?root_of=' . $post_type;
+		$new_rules[ '^' . $struct . '/?$' ]            = 'index.php?root_of=' . $post_type;
 	}
 	if ( ! empty( $new_rules ) ) {
 		$rules = array_merge( $new_rules, $rules );
