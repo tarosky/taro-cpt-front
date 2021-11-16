@@ -98,7 +98,7 @@ jobs:
         run: bash bin/clean.sh
 
       - name: Create Zip
-        run: zip -r rich-taxonomy.zip ./
+        run: zip -r ${{ github.event.repository.name }}.zip ./
 
       - name: Create Release
         id: pre_release
@@ -107,7 +107,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
-          release_name: Release Rich TAxonomy ${{ github.ref }}
+          release_name: Release ${{ github.event.repository.name }} ${{ github.ref }}
           body: |
             Release Rich Taxonomy plugin version ${{ github.ref }}
           draft: false
@@ -119,6 +119,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.pre_release.outputs.upload_url }}
-          asset_path: ./rich-taxonomy.zip
-          asset_name: rich-taxonomy.zip
+          asset_path: ./${{ github.event.repository.name }}.zip
+          asset_name: ${{ github.event.repository.name }}.zip
           asset_content_type: application/zip
