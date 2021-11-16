@@ -22,7 +22,9 @@ function ts_cptf_init() {
 	load_plugin_textdomain( 'tscptf', false, basename( __DIR__ ) . '/languages' );
 	// Initialize.
 	require_once __DIR__ . '/includes/functions.php';
+	require_once __DIR__ . '/includes/editor.php';
 	require_once __DIR__ . '/includes/settings.php';
+	require_once __DIR__ . '/includes/rewrite.php';
 }
 add_action( 'plugin_loaded', 'ts_cptf_init' );
 

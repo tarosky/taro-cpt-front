@@ -23,13 +23,21 @@ add_action( 'admin_init', function() {
 		} else {
 			foreach ( $post_types as $post_type ) {
 				printf(
-					'<label style="display: inline-block; margin: 0 1em 1em 0;"><input type="checkbox" name="ts-cptf-post-types[]" value="%s"%s /> %s</label>',
+					'<label style="display: inline-block; margin: 0 1em 1em 0;"><input type="checkbox" name="ts-cptf-post-types[]" value="%s"%s /> %s%s</label>',
 					esc_attr( $post_type->name ),
 					checked( ts_cptf_available( $post_type->name ), true, false ),
-					esc_html( $post_type->label )
+					esc_html( $post_type->label ),
+					( $post_type->has_archive ? esc_html__( '(Has Archive)', 'tscptf' ) : esc_html__( '(No Archive)', 'tscptf' ) )
 				);
 			}
 		}
+		// Description.
+		printf(
+			'<p class="description">%s &raquo; <a href="%s">%s</a></p>',
+			esc_html__( 'Go permalink page on change.', 'tscptf' ),
+			esc_url( admin_url( 'options-permalink.php' ) ),
+			esc_html__( 'Go to Permalink', 'tscptf' )
+		);
 	}, 'reading', 'ts-cptf-section' );
 	register_setting( 'reading', 'ts-cptf-post-types' );
 } );
