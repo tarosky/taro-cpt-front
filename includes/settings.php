@@ -15,19 +15,19 @@ add_action( 'admin_init', function() {
 	add_settings_section( 'ts-cptf-section', __( 'Front Page for Custom Post Type', 'tscptf' ), function() {}, 'reading' );
 	add_settings_field( 'ts-cptf-post-types', __( 'Post Types', 'tscptf' ), function() {
 		$post_types = get_post_types( [
-			'public'   => true,
-			'_builtin' => false,
+			'public'      => true,
+			'has_archive' => false,
+			'_builtin'    => false,
 		], OBJECT );
 		if ( empty( $post_types ) ) {
 			printf( '<p class="description">%s</p>', esc_html__( 'No custom post types available.', 'tscptf' ) );
 		} else {
 			foreach ( $post_types as $post_type ) {
 				printf(
-					'<label style="display: inline-block; margin: 0 1em 1em 0;"><input type="checkbox" name="ts-cptf-post-types[]" value="%s"%s /> %s%s</label>',
+					'<label style="display: inline-block; margin: 0 1em 1em 0;"><input type="checkbox" name="ts-cptf-post-types[]" value="%s"%s /> %s</label>',
 					esc_attr( $post_type->name ),
 					checked( ts_cptf_available( $post_type->name ), true, false ),
-					esc_html( $post_type->label ),
-					( $post_type->has_archive ? esc_html__( '(Has Archive)', 'tscptf' ) : esc_html__( '(No Archive)', 'tscptf' ) )
+					esc_html( $post_type->label )
 				);
 			}
 		}
