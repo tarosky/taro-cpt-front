@@ -33,7 +33,7 @@ function ts_cptf_post_types() {
  */
 function ts_cptf_is_front( $post = null ) {
 	$post = get_post( $post );
-	if ( ! ts_cptf_available( $post->post_type ) ) {
+	if ( ! $post || ! ts_cptf_available( $post->post_type ) ) {
 		return false;
 	}
 	return '1' === get_post_meta( $post->ID, '_tscptf_is_front', true );
