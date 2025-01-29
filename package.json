@@ -45,5 +45,8 @@
 		"webpack": "^5.3",
 		"webpack-stream": "^6.1"
 	},
-	"dependencies": {}
+	"dependencies": {},
+	"volta": {
+		"node": "12.22.12"
+	}
 }

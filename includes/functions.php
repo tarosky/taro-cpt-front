@@ -22,7 +22,7 @@ function ts_cptf_available( $post_type ) {
  * @return string[]
  */
 function ts_cptf_post_types() {
-	return (array) get_option( 'ts-cptf-post-types', [] );
+	return (array) get_option( 'ts-cptf-post-types', array() );
 }
 
 /**
@@ -46,19 +46,19 @@ function ts_cptf_is_front( $post = null ) {
  * @return WP_Post|null
  */
 function ts_cptf_get_front_page( $post_type ) {
-	$query = new WP_Query( [
+	$query = new WP_Query( array(
 		'post_type'      => $post_type,
 		'post_status'    => 'any',
 		'posts_per_page' => 1,
 		'no_fround_rows' => true,
 		'ignore_sticky'  => true,
-		'meta_query'     => [
-			[
+		'meta_query'     => array(
+			array(
 				'key'   => '_tscptf_is_front',
 				'value' => '1',
-			],
-		],
-	] );
+			),
+		),
+	) );
 	foreach ( $query->posts as $post ) {
 		return $post;
 	}
@@ -75,9 +75,9 @@ function ts_cptf_post_type_struct( $post_type ) {
 	global $wp_rewrite;
 	$post_type_obj = get_post_type_object( $post_type );
 	if ( ! $post_type_obj ) {
-		return [];
+		return array();
 	}
-	$struct = [ trim( $post_type_obj->rewrite['slug'], '/' ) ];
+	$struct = array( trim( $post_type_obj->rewrite['slug'], '/' ) );
 	if ( $post_type_obj->rewrite['with_front'] && ( '/' !== $wp_rewrite->front ) ) {
 		array_unshift( $struct, trim( $wp_rewrite->front, '/' ) );
 	}

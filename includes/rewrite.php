@@ -9,7 +9,7 @@
 /**
  * Filter permalink.
  */
-add_filter( 'post_type_link', function( $link, $post ) {
+add_filter( 'post_type_link', function ( $link, $post ) {
 	if ( ts_cptf_is_front( $post ) && get_option( 'rewrite_rules' ) ) {
 		// This is front page.
 		// Generate original pemalink.
@@ -24,7 +24,7 @@ add_filter( 'post_type_link', function( $link, $post ) {
  *
  * @aram string[] $vars Query vars.
  */
-add_filter( 'query_vars', function( $vars ) {
+add_filter( 'query_vars', function ( $vars ) {
 	$vars[] = 'root_of';
 	return $vars;
 } );
@@ -35,8 +35,8 @@ add_filter( 'query_vars', function( $vars ) {
  * @param string[] $rules Rewrite rules.
  * @return string[]
  */
-add_filter( 'rewrite_rules_array', function( $rules ) {
-	$new_rules = [];
+add_filter( 'rewrite_rules_array', function ( $rules ) {
+	$new_rules = array();
 	foreach ( ts_cptf_post_types() as $post_type ) {
 		$struct = ts_cptf_post_type_struct( $post_type );
 		if ( empty( $struct ) ) {
@@ -56,7 +56,7 @@ add_filter( 'rewrite_rules_array', function( $rules ) {
  *
  * @param WP_Query $wp_query Query object.
  */
-add_action( 'pre_get_posts', function( $wp_query ) {
+add_action( 'pre_get_posts', function ( $wp_query ) {
 	$is_front = $wp_query->get( 'root_of' );
 	if ( ! $is_front ) {
 		return;
@@ -65,11 +65,11 @@ add_action( 'pre_get_posts', function( $wp_query ) {
 	$wp_query->set( 'posts_per_page', 1 );
 	$wp_query->set( 'no_found_rows', true );
 	$wp_query->set( 'ignore_sticky', true );
-	$wp_query->set( 'meta_query', [
-		[
+	$wp_query->set( 'meta_query', array(
+		array(
 			'key'   => '_tscptf_is_front',
 			'value' => '1',
-		],
-	] );
+		),
+	) );
 	$wp_query->singular = true;
 } );

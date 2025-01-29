@@ -11,7 +11,7 @@
  * @param string[] $states States.
  * @param WP_Post  $post   Post object.
  */
-add_filter( 'display_post_states', function( $states, $post ) {
+add_filter( 'display_post_states', function ( $states, $post ) {
 	if ( ! ts_cptf_is_front( $post ) ) {
 		return $states;
 	}
@@ -22,7 +22,7 @@ add_filter( 'display_post_states', function( $states, $post ) {
 /**
  * Save pst dat.
  */
-add_action( 'save_post', function( $post_id, $post ) {
+add_action( 'save_post', function ( $post_id, $post ) {
 	if ( ! wp_verify_nonce( filter_input( INPUT_POST, '_tscptfnonce' ), 'tscptf_update' ) ) {
 		return;
 	}
@@ -31,7 +31,6 @@ add_action( 'save_post', function( $post_id, $post ) {
 	} else {
 		delete_post_meta( $post_id, '_tscptf_is_front' );
 	}
-
 }, 10, 2 );
 
 /**
@@ -39,11 +38,11 @@ add_action( 'save_post', function( $post_id, $post ) {
  *
  * @param string $post_type Post type.
  */
-add_action( 'add_meta_boxes', function( $post_type ) {
+add_action( 'add_meta_boxes', function ( $post_type ) {
 	if ( ! ts_cptf_available( $post_type ) ) {
 		return;
 	}
-	add_meta_box( 'tscpf-is-front', __( 'Front Page Setting', 'tscptf' ), function( WP_Post $post ) {
+	add_meta_box( 'tscpf-is-front', __( 'Front Page Setting', 'tscptf' ), function ( WP_Post $post ) {
 		$front = ts_cptf_get_front_page( $post->post_type );
 		if ( $front && $front->ID !== $post->ID ) {
 			// Other page is front.
@@ -57,7 +56,7 @@ add_action( 'add_meta_boxes', function( $post_type ) {
 		} else {
 			wp_nonce_field( 'tscptf_update', '_tscptfnonce', false );
 			$is_front = $front ? 1 : 0;
-			foreach ( [ __( 'Not a Front Page', 'tscptf' ), __( 'Set as a Front Page', 'tscptf' ) ] as $index => $label ) {
+			foreach ( array( __( 'Not a Front Page', 'tscptf' ), __( 'Set as a Front Page', 'tscptf' ) ) as $index => $label ) {
 				printf(
 					'<p><label><input type="radio" value="%s" name="tscptf-is-front" %s /> %s</label></p>',
 					esc_attr( $index ),
