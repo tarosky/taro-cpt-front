@@ -52,7 +52,7 @@ jobs:
     name: Check PHP styntax
     uses: tarosky/workflows/.github/workflows/phpcs.yml@main
     with:
-      version:7.4
+      version: 7.4
 
   assets:
     name: Check Assets
@@ -92,9 +92,6 @@ jobs:
 
       - name: Install Subversion
         run: sudo apt-get install subversion
-
-      - name: Confirm
-        run: echo ${{ needs.pre_release.outputs.upload_url }}
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
