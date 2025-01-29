@@ -3,9 +3,9 @@ Taro CPT Front
 
 Contributors: tarosky,Takahashi_Fumiki  
 Tags: CPT  
-Requires at least: 5.5.0  
-Requires PHP: 5.6  
-Tested up to: 5.8  
+Requires at least: 5.9  
+Requires PHP: 7.4  
+Tested up to: 6.7  
 Stable Tag: nightly  
 License: GPLv3 or later  
 License URI: http://www.gnu.org/licenses/gpl-3.0.txt  
@@ -37,6 +37,11 @@ This plugin allow specific post type to have a "Front Page" and it's permalink w
 Create new ticket at Support forum. Or else, create [new issue](https://github.com/tarosky/taro-cpt-front/issues) or send [Pull Request](https://github.com/tarosky/taro-cpt-front/pulls) on GitHub.
 
 ## Changelog
+
+### 1.1.0
+
+* Bump required PHP version.
+* Fix small bugs.
 
 ### 1.0.0
 
