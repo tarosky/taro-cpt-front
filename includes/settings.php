@@ -6,19 +6,19 @@
 /**
  * Register setting fields.
  */
-add_action( 'admin_init', function() {
+add_action( 'admin_init', function () {
 	// If doing AJAX, do nothing.
 	if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
 		return;
 	}
 	// Register fields.
-	add_settings_section( 'ts-cptf-section', __( 'Front Page for Custom Post Type', 'tscptf' ), function() {}, 'reading' );
-	add_settings_field( 'ts-cptf-post-types', __( 'Post Types', 'tscptf' ), function() {
-		$post_types = get_post_types( [
+	add_settings_section( 'ts-cptf-section', __( 'Front Page for Custom Post Type', 'tscptf' ), function () {}, 'reading' );
+	add_settings_field( 'ts-cptf-post-types', __( 'Post Types', 'tscptf' ), function () {
+		$post_types = get_post_types( array(
 			'public'      => true,
 			'has_archive' => false,
 			'_builtin'    => false,
-		], OBJECT );
+		), OBJECT );
 		if ( empty( $post_types ) ) {
 			printf( '<p class="description">%s</p>', esc_html__( 'No custom post types available.', 'tscptf' ) );
 		} else {

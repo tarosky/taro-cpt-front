@@ -38,9 +38,9 @@ function ts_cptf_version() {
 	if ( $version ) {
 		return $version;
 	}
-	$info    = get_file_data( __FILE__, [
+	$info    = get_file_data( __FILE__, array(
 		'version' => 'Version',
-	] );
+	) );
 	$version = $info['version'];
 	return $version;
 }
