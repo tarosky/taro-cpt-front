@@ -88,7 +88,7 @@ add_action( 'pre_get_posts', function ( $wp_query ) {
 	$wp_query->queried_object    = $front_page;
 	$wp_query->queried_object_id = $front_page->ID;
 	// Set flags.
-	$wp_query->is_singular    = true;
-	$wp_query->is_single      = true;
-	$wp_query->is_home        = false;
+	$wp_query->is_singular = true;
+	$wp_query->is_single   = true;
+	$wp_query->is_home     = false;
 } );
