@@ -61,15 +61,34 @@ add_action( 'pre_get_posts', function ( $wp_query ) {
 	if ( ! $is_front ) {
 		return;
 	}
+	// Search post type root.
+	$sub_query = new WP_Query( [
+		'post_type'      => $is_front,
+		'posts_per_page' => 1,
+		'no_found_rows'  => true,
+		'ignore_sticky'  => true,
+		'meta_query'     => [
+			[
+				'key'   => '_tscptf_is_front',
+				'value' => '1',
+			],
+		],
+	] );
+	// Not found.
+	if ( ! $sub_query->have_posts() ) {
+		$wp_query->is_404 = true;
+		return;
+	}
+	// Rebuild query vars for single page.
+	$front_page = $sub_query->posts[0];
+	$wp_query->set( 'root_of', '' );
+	$wp_query->set( 'p', $front_page->ID );
 	$wp_query->set( 'post_type', $is_front );
-	$wp_query->set( 'posts_per_page', 1 );
-	$wp_query->set( 'no_found_rows', true );
-	$wp_query->set( 'ignore_sticky', true );
-	$wp_query->set( 'meta_query', array(
-		array(
-			'key'   => '_tscptf_is_front',
-			'value' => '1',
-		),
-	) );
-	$wp_query->singular = true;
+	// Set post type object.
+	$wp_query->queried_object    = $front_page;
+	$wp_query->queried_object_id = $front_page->ID;
+	// Set flags.
+	$wp_query->is_singular = true;
+	$wp_query->is_single   = true;
+	$wp_query->is_home     = false;
 } );

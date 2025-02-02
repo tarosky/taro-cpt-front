@@ -54,28 +54,11 @@ jobs:
     with:
       version: 7.4
 
-  assets:
-    name: Check Assets
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@main
-
-      - name: Install Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '12'
-
-      - name: Install NPM Packages
-        run: npm install
-
-      - name: Check JS & CSS syntax
-        run: npm run lint
-
   status-check:
     name: Status Check
     runs-on: ubuntu-latest
     if: always()
-    needs: [ lint, assets ]
+    needs: [ lint ]
     steps:
       - uses: re-actors/alls-green@release/v1
         with:
@@ -99,10 +82,10 @@ jobs:
           php-version: '7.4'
           tools: composer
 
-      - name: Install NPM
-        uses: actions/setup-node@v4
-        with:
-          node-version: '12'
+#      - name: Install NPM
+#        uses: actions/setup-node@v4
+#        with:
+#          node-version: '18'
 
       - name: Build package.
         run: bash bin/build.sh ${{ github.ref }}

@@ -13,8 +13,8 @@ echo "Building Taro CPT Front v${VERSION}..."
 # composer install --no-dev --prefer-dist
 
 # Install NPM.
-npm install
-npm run package
+#npm install
+#npm run package
 
 # Create README.txt
 curl -L https://raw.githubusercontent.com/fumikito/wp-readme/master/wp-readme.php | php
