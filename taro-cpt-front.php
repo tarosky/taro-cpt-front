@@ -1,15 +1,17 @@
 <?php
 /**
-Plugin Name: Taro CPT Front
-Description: Custom post types can have a front page.
-Plugin URI: https://wordpress.org/plugins/taro-cpt-front/
-Author: Tarosky INC.
-Version: nightly
-Author URI: https://tarosky.co.jp/
-License: GPL3 or later
-License URI: https://www.gnu.org/licenses/gpl-3.0.html
-Text Domain: tscptf
-Domain Path: /languages
+ * Plugin Name: Taro CPT Front
+ * Description: Custom post types can have a front page.
+ * Plugin URI: https://wordpress.org/plugins/taro-cpt-front/
+ * Author: Tarosky INC.
+ * Version: nightly
+ * Requires at least: 5.9
+ * Requires PHP: 7.4
+ * Author URI: https://tarosky.co.jp/
+ * License: GPL3 or later
+ * License URI: https://www.gnu.org/licenses/gpl-3.0.html
+ * Text Domain: tscptf
+ * Domain Path: /languages
  */
 
 defined( 'ABSPATH' ) or die();
