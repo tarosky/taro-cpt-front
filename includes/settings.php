@@ -33,11 +33,12 @@ add_action( 'admin_init', function () {
 		}
 		// Description.
 		printf(
-			'<p class="description">%s &raquo; <a href="%s">%s</a></p>',
-			esc_html__( 'Go permalink page on change.', 'tscptf' ),
-			esc_url( admin_url( 'options-permalink.php' ) ),
-			esc_html__( 'Go to Permalink', 'tscptf' )
-		);
+			'<p class="description">%s</p>',
+			sprintf(
+				esc_html__( 'When you change the post type selection, save changes. Then, you must flush the URL rewrite rules. Go to the %1$sPermalinks%2$s settings page. You do not need to change any settings. Click save changes.', 'tscptf' ),
+				'<a href="' . esc_url( admin_url( 'options-permalink.php' ) ) . '">',
+				'</a>'
+			) );
 	}, 'reading', 'ts-cptf-section' );
 	register_setting( 'reading', 'ts-cptf-post-types' );
 } );
