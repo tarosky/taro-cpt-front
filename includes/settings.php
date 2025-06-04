@@ -21,7 +21,7 @@ add_action( 'admin_init', function () {
 		), OBJECT );
 		if ( empty( $post_types ) ) {
 			printf( '<p class="description">%s</p>', esc_html__( 'No custom post types available.', 'tscptf' ) );
-            printf( '<p class="description">%s</p>', esc_html__( 'Note that registered custom post type\'s public parameter must be true, and has_archive parameter must be false, to be able to set this option.', 'tscptf' ) );
+			printf( '<p class="description">%s</p>', esc_html__( 'Note that registered custom post type\'s public parameter must be true, and has_archive parameter must be false, to be able to set this option.', 'tscptf' ) );
 		} else {
 			foreach ( $post_types as $post_type ) {
 				printf(
