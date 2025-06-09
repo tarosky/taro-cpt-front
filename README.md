@@ -1,7 +1,7 @@
 Taro CPT Front
 ===============================================
 
-Contributors: tarosky,Takahashi_Fumiki  
+Contributors: tarosky,Takahashi_Fumiki, tswallie    
 Tags: CPT  
 Requires at least: 5.9  
 Requires PHP: 7.4  
@@ -14,7 +14,7 @@ A WordPress plugin to let custom post type to have a front page.
 
 ## Description
 
-CPT(Custom Post Pype e.g `book`) has URL structure like below:
+CPT(Custom Post Type e.g `book`) has URL structure like below:
 
 - `/book/harry-potter`
 - `/book/harry-potter/philosopers-stone`
