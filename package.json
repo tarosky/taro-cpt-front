@@ -15,8 +15,5 @@
 	"devDependencies": {
 		"@wordpress/env": "^9.0"
 	},
-	"dependencies": {},
-	"volta": {
-		"node": "18.20.6"
-	}
+	"dependencies": {}
 }
